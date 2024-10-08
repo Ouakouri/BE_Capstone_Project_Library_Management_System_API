@@ -51,10 +51,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'lims_portal.urls'
 
+import os
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.abspath(os.path.dirname(__file__) + "/../lims_app/templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
