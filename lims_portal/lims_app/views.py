@@ -32,8 +32,30 @@ def save_reader(request):
     reader_item.save()
     return redirect('/readers')
 
+# fonctions for books page:
+
+def books(request):
+    return render(request,"books.html", context={'current_tab' : "books"})
+
+def books_tab(request):
+    if request.method=="GET":
+        books = reader.objects.all()
+        return render(request, "books.html", context={'current_tab' : "books", 'books' : books})
+    else:
+        query = request.POST['query']
+        books =  Book.objects.raw("select * from lims_app_Book where title like '%"+query+"%'")
+        return render(request, "books.html", context={'current_tab' : "books", 'books' : books})
 
 
-def save_student(request):
-    student_name = request.POST['student_name']
-    return render(request,"welcome.html",context={'student_name': student_name})
+def save_book(request):
+    book_item = Book(
+        title=request.POST['title'],
+        author=request.POST['author'],
+        isbn=request.POST['isbn'],
+        published_date=request.POST['published_date'],
+        copies_available=request.POST['copies_available'],
+        active=True
+    )
+    book_item.save()
+    return redirect('/books')
+

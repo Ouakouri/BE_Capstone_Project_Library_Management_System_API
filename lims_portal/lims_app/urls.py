@@ -22,7 +22,8 @@ urlpatterns = [
     path('', home),
     path('home', home),
     path('readers', readers_tab),
-    path('save', save_student),
     path('readers/add', save_reader),
+    path('books', books_tab),
+    path('books/add', save_book),
 
 ]
