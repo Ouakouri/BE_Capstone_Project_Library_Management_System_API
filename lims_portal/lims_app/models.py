@@ -1,3 +1,26 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
+class Book(models.Model):
+    def __str__(self):
+        return self.title
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    isbn = models.CharField(max_length=13, unique=True)
+    published_date = models.DateField()
+    copies_available = models.IntegerField()
+
+class reader(models.Model):
+    def __str__(self):
+        return self.reader_name
+    reference_id = models.CharField(max_length=255)
+    reader_name = models.CharField(max_length=255)
+    reader_contact = models.CharField(max_length=255)
+    reader_address = models.CharField(max_length=255)
+    active = models.BooleanField(default=True)
+
+class Transaction(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    checkout_date = models.DateTimeField(auto_now_add=True)
+    return_date = models.DateTimeField(null=True, blank=True)

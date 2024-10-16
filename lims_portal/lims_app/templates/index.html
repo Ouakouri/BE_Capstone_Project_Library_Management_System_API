@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+  
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +17,7 @@
             background-color: #f4f4f4;
         }
         header {
-            background-color: #007bff;
+            background-color: #97794b;
             padding: 10px;
             text-align: center;
             color: white;
@@ -20,7 +25,7 @@
         nav {
             display: flex;
             justify-content: center;
-            background-color: #007bff;
+            background-color: #b6a072;
             padding: 10px;
         }
         nav a {
@@ -30,7 +35,7 @@
             font-weight: bold;
         }
         nav a:hover {
-            background-color: #0056b3;
+            background-color: #c5ad69;
         }
         .hero {
             text-align: center;
@@ -49,12 +54,12 @@
             padding: 10px 20px;
             font-size: 16px;
             color: white;
-            background-color: #007bff;
+            background-color: #584c30;
             border: none;
             cursor: pointer;
         }
         .hero button:hover {
-            background-color: #0056b3;
+            background-color: #746139;
         }
         .content {
             display: flex;
@@ -86,42 +91,53 @@
     </header>
 
     <nav>
-        <a href="#">HOME</a>
-        <a href="#">READERS</a>
-        <a href="#">BOOKS</a>
-        <a href="#">MY BAG</a>
-        <a href="#">RETURNS</a>
-    </nav>
-
-    <div class="hero">
-        <h1>Hello, readers!</h1>
-        <p>Welcome to City Library. We have a large collection of books to cater to the reading needs of all kinds of readers.</p>
-        <button>Browse our collection</button>
-    </div>
-
-    <div class="content">
-        <div>
-            <h3>Why reading is important?</h3>
-            <p>Reading is good for you because it improves your focus, memory, empathy, and communication skills. It can reduce stress, improve your mental health, and help you live longer. Reading also allows you to learn new things to help you succeed in your work and relationships.</p>
-        </div>
-        <div>
-            <h3>Key Benefits</h3>
-            <ul>
-                <li>Increase your vocabulary and comprehension skills</li>
-                <li>Reduce stress</li>
-                <li>Improve mental health</li>
-                <li>Prevents cognitive decline</li>
+        <div class="container-fluid justify-content-center align-items-center">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    {% if current_tab == 'home' %}
+                    <a class="nav-link active" aria-current="page" href="/home">HOME</a>
+                    {% else %}
+                    <a class="nav-link" aria-current="page" href="/home">HOME</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if current_tab == 'readers' %}
+                    <a class="nav-link active" aria-current="page" href="/readers">READERS</a>
+                    {% else %}
+                    <a class="nav-link" aria-current="page" href="/readers">READERS</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if current_tab == 'books' %}
+                    <a class="nav-link active" aria-current="page" href="/books">BOOKS</a>
+                    {% else %}
+                    <a class="nav-link" aria-current="page" href="/books">BOOKS</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if current_tab == 'bag' %}
+                    <a class="nav-link active" aria-current="page" href="/bag">MY BAG</a>
+                    {% else %}
+                    <a class="nav-link" aria-current="page" href="/bag">MY BAG</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item"></li>
+                    {% if current_tab == 'returns' %}
+                    <a class="nav-link active" aria-current="page" href="/returns">RETURNS</a>
+                    {% else %}
+                    <a class="nav-link" aria-current="page" href="/returns">RETURNS</a>
+                    {% endif %}
+                </li>
             </ul>
         </div>
-        <div>
-            <h3>Thought for the day</h3>
-            <p>"Just don’t give up trying to do what you really want to do. Where there is love and inspiration, I don’t think you can go wrong." – Ella Fitzgerald</p>
-        </div>
-    </div>
+    </nav>
+    {% block main_content %}
+    {% endblock %}
+    
 
-    <footer>
-        &copy; City Library 2023
-    </footer>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </html>
