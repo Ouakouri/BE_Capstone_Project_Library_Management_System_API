@@ -25,5 +25,7 @@ urlpatterns = [
     path('readers/add', save_reader),
     path('books', books_tab),
     path('books/add', save_book),
+    path('books/checkout/<int:book_id>/', checkout_book, name='checkout_book'),
+    path('books/return/<int:transaction_id>/', return_book, name='return_book'),
 
 ]
